@@ -1,21 +1,20 @@
 #include <iostream>
 #include <string>
 
-int main(void){
-    std::string x, y, c;
+int main(){
+    char x, y, c;
     std::cin >> x;
     std::cin >> y;
     std::cin >> c;
     
-    auto from_ascii = int(x);
-    auto to_ascii = int(y);
-    
-    for(int i = from_ascii; i < to_ascii; i++)
+    int sub = int(y) - int(x) + 1;
+  
+    for(int i = 0; i < sub; i++)
     {
-        char c = i;
-        if(std::string(i) == c)
+        if(c == x + i)
         {
             std::cout << "true" << std::endl;
+            return 0;
         }
     }
     
