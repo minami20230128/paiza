@@ -19,7 +19,7 @@ int main()
                 S.erase(itr);
             }
         }
-        itr++;
+        if(itr != S.end()) itr++;
     }
     
     std::cout << S << std::endl;
