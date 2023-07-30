@@ -3,31 +3,33 @@
 
 int main()
 {
-    int N, M;
-    std::cin >> N;
-    std::cin >> M;
-    std::vector<bool>IsCleaned(N, false);
-
-    for(int i = 0; i < N; i++)
+    try
     {
-        int L = M * i + 1;
-        //std::cout << L << std::endl;
-        if(L % N == 0)
+        int N, M;
+        std::cin >> N;
+        std::cin >> M;
+        std::vector<bool>IsCleaned(N, false);
+
+        for(int i = 0; i < N; i++)
         {
-            IsCleaned[N - 1] = true;
+            int L = M * i + 1;
+            //std::cout << L << std::endl;
+            IsCleaned[L % N] = true;
+        }
+
+        if(std::find(IsCleaned.begin(), IsCleaned.end(), false) == IsCleaned.end())
+        {
+            std::cout << "yes" << std::endl;
         }
         else
         {
-            IsCleaned[L % N - 1] = true;
+            std::cout << "no" << std::endl;
         }
-    }
 
-    if(std::find(IsCleaned.begin(), IsCleaned.end(), false) == IsCleaned.end())
-    {
-        std::cout << "yes" << std::endl;
         return 0;
     }
-    std::cout << "no" << std::endl;
-
-    return 0;
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 }
