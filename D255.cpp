@@ -1,9 +1,12 @@
 #include <iostream>
+#include <string>
 
-int main(){
-    int N;
-    std::cin >> N;
-    std::cout << N * 3 << std::endl;
-    
+int main()
+{
+    std::string name, favorite;
+    std::cin >> name;
+    std::cin >> favorite;
+
+    std::cout << favorite << name << favorite;
     return 0;
 }
