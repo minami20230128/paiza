@@ -2,6 +2,25 @@
 #include <string>
 #include <map>
 
+std::string get_winner(std::map<std::string, int> vote)
+{
+    std::string winner;
+    int largest = 0;
+    auto itr = vote.begin();
+
+    while(itr != vote.end())
+    {
+        if(itr->second > largest)
+        {
+            largest = itr->second;
+            winner = itr->first;
+        }
+        itr++;
+    }
+
+    return winner;
+}
+
 int main()
 {
     int N;
@@ -16,37 +35,15 @@ int main()
         std::cin >> name;
         std::cin >> vote_number;
 
-        vote_one[name] += vote_number;
-        vote_two[name]++;
+        vote_one[name]++;
+        vote_two[name] += vote_number;
     }
 
-    auto itr = vote_one.begin();
-    auto itr_two = vote_two.begin();
-    int largest = 0;
-    int largest_two = 0;
-    std::string winner;
-    std::string winner_two;
+    auto winner_one = get_winner(vote_one);
+    auto winner_two = get_winner(vote_two);
 
-    while(itr != vote_one.end())
-    {
-        if(itr->second > largest)
-        {
-            largest = itr->second;
-            winner = itr->first;
-        }
-        
-        if(itr_two->second > largest_two)
-        {
-            largest_two = itr_two->second;
-            winner_two = itr_two->first;
-        }
-        
-        itr++;
-        itr_two++;
-    }
-
+    std::cout << winner_one << std::endl;
     std::cout << winner_two << std::endl;
-    std::cout << winner << std::endl;
 
     return 0;
 }
