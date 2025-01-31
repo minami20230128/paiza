@@ -27,12 +27,13 @@ int main()
         }   
     }
     
-    //std::cout << gu_num;
+    int without_gu = N - gu_num;
+    //std::cout << without_gu;
 
     std::vector<int> win_by_combination;
-    for(int i = 0; i < N; i++)
+    for(int i = 0; i < without_gu; i++)
     {
-        for(int j = 0; j < N - i; j++)
+        for(int j = 0; j <= without_gu - i; j++)
         {
             if(2 * i + 5 * j == M)   
             {
@@ -45,7 +46,7 @@ int main()
         }
     }
 
-    int win = gu_num;
+    int win = 0;
     for(auto&& combi : win_by_combination)
     {
         if(combi > win)
