@@ -7,12 +7,27 @@ class ChocoSplitter
 public:
     ChocoSplitter()
     {
-
     }
 
     ~ChocoSplitter()
     {
 
+    }
+
+    void split(std::vector<std::vector<int>> chocolate)
+    {
+        this->choco_width = chocolate[0].size();
+        for(auto&& choco_arr : chocolate)
+        {
+            if(!this->can_spilt(choco_arr))
+            {
+                std::cout << "No" << std::endl;
+
+                return;
+            }
+        }
+        
+        this->print_result(this->choco_width);
     }
 
     bool can_spilt(std::vector<int> choco_arr)
@@ -46,6 +61,7 @@ public:
 
 private:
     std::vector<int> split_points;
+    int choco_width;
 
     void print_arr_result(int split_point, int choco_width)
     {
@@ -78,15 +94,9 @@ int main()
         {
             std::cin >> choco.at(i).at(j);
         }
-
-        if(!splitter.can_spilt(choco.at(i)))
-        {
-            std::cout << "No" << std::endl;
-            return 0;
-        }
     }
     
-    splitter.print_result(choco_width);
+    splitter.split(choco);
 
     return 0;
 }
