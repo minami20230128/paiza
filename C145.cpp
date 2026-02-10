@@ -19,7 +19,6 @@ int main()
     int sum = 0;
     for(int i = 1; i < N - 1; i++)
     {
-        std::cout << points[i] << std::endl;
         sum += points[i];
     }
     
